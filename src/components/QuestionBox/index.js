@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./QuestionBox.scss";
 
-const QuestionBox = ({ question, options }) => {
+const QuestionBox = ({ question, options, selected }) => {
   const [answer, setAnswer] = useState(options);
   return (
     <div className="questionBox">
@@ -12,6 +12,9 @@ const QuestionBox = ({ question, options }) => {
           className="answerBtn"
           onClick={() => {
             setAnswer([text]);
+            answer.length > 1
+              ? selected(text)
+              : console.log("This Question has answerd!");
           }}
         >
           {text}
